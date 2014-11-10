@@ -1,0 +1,4 @@
+magicbar
+========
+
+functions shorcut
