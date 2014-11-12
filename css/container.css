@@ -1,0 +1,10 @@
+.mb-container {
+    position: fixed;
+    top: 0;
+    right: -35px;
+    height: 100%;
+    width: 35px;
+    background-color: #fea;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+}

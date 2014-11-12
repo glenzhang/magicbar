@@ -1,0 +1,22 @@
+.mb-loginmodule-trigger {
+    position: absolute;
+    top: 100px;
+    left: 2px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    text-indent: -9999px;
+}
+
+.mb-login-magnet {
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    display: none;
+    background: #666;
+    border: 1px solid #000;
+    color: #fff;
+    opacity: 0;
+    filter:alpha(opacity=0);
+}

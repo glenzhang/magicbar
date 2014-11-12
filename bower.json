@@ -2,7 +2,7 @@
   "name": "magicbar",
   "version": "0.0.0",
   "description": "function shortcut",
-  "authors":"glenzhang@live.com",
+  "authors": "glenzhang@live.com",
   "license": "MIT",
   "ignore": [
     "**/.*",
@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "jquery": "1.8.3",
-    "requirejs": "~2.1.15"
+    "requirejs": "~2.1.15",
+    "seajs": "~2.3.0"
   }
 }
