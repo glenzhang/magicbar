@@ -19,7 +19,7 @@ define(['jquery'], function($) {
     };
 
     StateMachine.fn.add = function(controller) {        
-        if(this.controllerObj[controller.id]) {
+        if(this.controllerObj[controller.name]) {
             return;
         }
 
@@ -32,7 +32,7 @@ define(['jquery'], function($) {
             this.trigger("change", controller);
         }, this);
 
-        this.controllerObj[controller.id] = controller;
+        this.controllerObj[controller.name] = controller;
     };
 
     StateMachine.fn.deactiveAll = function() {

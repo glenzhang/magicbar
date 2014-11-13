@@ -6,6 +6,8 @@ require.config({
     }
 });
 
-require(["magicbar", "config"], function(magicbar, config) {
-    magicbar.init(config);
+require(["magicbar", "loader"], function(magicbar, L) {
+    L.getHtml("/partial/container.html", function(res) {
+        magicbar.init($(res).appendTo("body"));
+    });
 });
