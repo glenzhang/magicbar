@@ -22,12 +22,12 @@ define(["jquery"], function($) {
         this.$view.animate({
             right: "35px",
             opacity: 1
-        }, 300);
+        }, 100);
     };
 
     ModuleBase.fn.activate = function() {
         this.showing = true;
-        this.$view.show();
+        //this.$view.show();
         this.adjustPosition();
     };
 
@@ -37,7 +37,7 @@ define(["jquery"], function($) {
         this.$view.animate({
             right: "70px",
             opacity: 0
-        }, 300);
+        }, 100);
     };
 
     ModuleBase.fn.toggle = function() {

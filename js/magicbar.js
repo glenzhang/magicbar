@@ -2,30 +2,24 @@
 
 define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
 
-    var $t = $('<div class="mb-container"></div>');
-    var moduleStrArr = [];
+    var $t = $('<div class="mb-container J_mb_container"></div>');
+    var moduleSB = new StringBuilder();
     var stateManager = new StateMachine();
     var enterSID;
     var leaveSID;
+    var activateMID;
 
     function init(modules) {
-
         modules = modules || [];
 
         $t.appendTo("body");
 
         for (var i = modules.length - 1; i >= 0; --i) {
-            moduleStrArr.push("<a href='javascript:void(0);' class='mb-")
-            moduleStrArr.push(modules[i]);
-            moduleStrArr.push("-trigger");
-            moduleStrArr.push(" J_mb_trigger' data-module='");
-            moduleStrArr.push(modules[i]);
-            moduleStrArr.push("'>");
-            moduleStrArr.push(modules[i]);
-            moduleStrArr.push("</a>");
+            moduleSB.append("<a href='javascript:void(0);' class='mb-{0}-trigger J_mb_trigger' ".format(modules[i]))
+                .append("data-module='{0}'>{0}</a>".format(modules[i]));
         }
 
-        $t.append(moduleStrArr.join(''));
+        $t.append(moduleSB.toString());
 
         setTimeout(function() {
             $t.css({
@@ -33,66 +27,48 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
             });
         }, 25);
 
-        $(document).on("mouseenter", ".J_mb_trigger", function() {
-            var $this = $(this);
+        $(document).on("click", ".J_mb_trigger", function(ev) {
+            ev.preventDefault();
+            var $trigger = $(this);
+            var moduleName = $trigger.data("module");
+            var mid = $trigger.data("id");
+            var currentController = mid && stateManager.controllerObj[mid];
+            var hasLoaded = currentController != undefined;
+/*
+            if(activateMID && activateMID != mid) {
+                stateManager.controllerObj[activateMID].deactivate();
+            }
+*/
+            if (hasLoaded) {
+                if (currentController.showing) {
+                    currentController.deactivate();
+                } else {
+                    currentController.active();
+                    activateMID = mid;
+                }
+            } else {
+                L.getHtml("/partial/{0}.html".format(moduleName), function(res) {
+                    var $moduleTemplate = $(res).appendTo($t);
 
-            enterSID = setTimeout(function() {
-                hoverInHandler($this);
-            }, 200);
+                    require(["{0}module".format(moduleName)], function(Module) {
+                        var module = new Module();
 
-        }).on("mouseleave", ".J_mb_trigger", function() {
-            var $this = $(this);
-
-            clearTimeout(enterSID);
-
-            leaveSID = setTimeout(function() {
-                hoverOutHandler($this);
-            }, 200);
-        });
-
-        $(document).on("mouseenter", ".J_mb_magnet", function() {
-            clearTimeout(leaveSID);
-        }).on("mouseleave", ".J_mb_magnet", function() {
-            var $this = $(this);
-            var module = $(this).attr("data-module");
-            var $trigger = $this.data("$trigger");
-            hoverOutHandler($trigger);
-        });
-    }
-
-    function hoverInHandler($trigger) {
-        var moduleName = $trigger.data("module");
-        var mid = $trigger.data("id");
-        var hasLoaded = mid && stateManager.controllerObj[mid] != undefined;
-
-        if (hasLoaded) {
-            stateManager.controllerObj[mid].activate()
-        } else {
-            L.getHtml("/partial/{0}.html".format(moduleName), function(res) {
-                var $moduleTemplate = $(res).appendTo($t);
-
-                require(["{0}module".format(moduleName)], function(Module) {
-                    var module = new Module();
-
-                    module.$trigger = $trigger;
-                    module.$view = $moduleTemplate;
-                    stateManager.add(module);
-                    $trigger.data("id", module.id);
-                    module.$view.data("$trigger", $trigger);
-                    module.setup();
+                        module.$trigger = $trigger;
+                        module.$view = $moduleTemplate;
+                        stateManager.add(module);
+                        $trigger.data("id", module.id);
+                        module.$view.data("$trigger", $trigger);
+                        activateMID = module.id;
+                        module.setup();
+                    });
                 });
-            });
-        }
-    }
-
-    function hoverOutHandler($trigger) {
-        var moduleName = $trigger.data("module");
-        var mid = $trigger.data("id");
-        var hasLoaded = mid && stateManager.controllerObj[mid] != undefined;
-
-        if (hasLoaded) {
-            stateManager.controllerObj[mid].deactivate()
-        }
+            }
+        }).on("click", function(ev) {
+            var $this = $(ev.target);
+            if ($this.parents(".J_mb_container").length == 0) {
+                stateManager.deactiveAll();
+            }
+        });
     }
 
     return {

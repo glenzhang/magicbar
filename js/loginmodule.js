@@ -35,7 +35,7 @@ define(["jquery", "modulebase"], function($, ModuleBase) {
     */
 
     Login.fn.setup = function() {
-        this.activate();
+        this.active();
     };
 
     return Login;

@@ -13,8 +13,7 @@ define(["jquery", "modulebase"], function($, ModuleBase) {
     Message.fn = Message.prototype;
 
     Message.fn.setup = function() {
-
-        
+        this.active();
     };
 
     return Message;

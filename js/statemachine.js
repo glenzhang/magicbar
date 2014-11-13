@@ -23,14 +23,13 @@ define(['jquery'], function($) {
             return;
         }
 
-        var uid = Math.random().toString(16).substr(2, 8);
-
-        this.bind("change" + uid, function(e, current) {
+        //var uid = Math.random().toString(16).substr(2, 8);
+        this.bind("change", function(e, current) {
             controller == current ? controller.activate() : controller.deactivate();
         });
 
         controller.active = $.proxy(function() {
-            this.trigger("change" + uid, controller);
+            this.trigger("change", controller);
         }, this);
 
         this.controllerObj[controller.id] = controller;

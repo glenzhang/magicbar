@@ -1,3 +1,3 @@
 define(function(){
-    return ["login", "message"];
+    return ["login", "message", "login"];
 });
