@@ -19,7 +19,29 @@ define(["jquery"], function($) {
         this.$view.css("top", this.$trigger.offset().top - $(window).scrollTop() - offset + "px");
         this.$view.css("right", "70px");
 
-        this.$view.animate({right: "35px", opacity:1}, 300);
+        this.$view.animate({
+            right: "35px",
+            opacity: 1
+        }, 300);
+    };
+
+    ModuleBase.fn.activate = function() {
+        this.showing = true;
+        this.$view.show();
+        this.adjustPosition();
+    };
+
+    ModuleBase.fn.deactivate = function() {
+        this.showing = false;
+        // this.$view.hide();
+        this.$view.animate({
+            right: "70px",
+            opacity: 0
+        }, 300);
+    };
+
+    ModuleBase.fn.toggle = function() {
+        this.showing ? this.deactivate() : this.activate();
     };
 
     return ModuleBase;

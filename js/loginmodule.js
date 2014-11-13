@@ -12,6 +12,7 @@ define(["jquery", "modulebase"], function($, ModuleBase) {
 
     Login.fn = Login.prototype;
 
+    /*
     Login.fn.activate = function() {
         this.showing = true;
         this.$view.show();
@@ -20,7 +21,21 @@ define(["jquery", "modulebase"], function($, ModuleBase) {
 
     Login.fn.deactivate = function() {
         this.showing = false;
-        this.$view.hidden();
+        console.log(this.$view);
+        this.$view.hide();
+    };
+
+    Login.fn.toggle = function() {
+        if(this.showing) {
+            this.deactivate();
+        }else{
+            this.activate();
+        }
+    };
+    */
+
+    Login.fn.setup = function() {
+        this.activate();
     };
 
     return Login;
