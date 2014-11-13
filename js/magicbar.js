@@ -5,10 +5,10 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
     function init($container) {
         var moduleSB = new StringBuilder();
         var stateManager = new StateMachine();
-        setTimeout(function(){
+        setTimeout(function() {
             $container.css({
                 right: 0
-            });     
+            });
         }, 25);
 
         $(document).on("click", ".J_mb_trigger", function(ev) {
@@ -47,6 +47,10 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
             if ($this.parents(".J_mb_container").length == 0) {
                 stateManager.deactiveAll();
             }
+        });
+
+        $(window).on("resize.MB", function() {
+            stateManager.deactiveAll();
         });
     }
 
