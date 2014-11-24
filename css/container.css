@@ -1,10 +1,14 @@
+body {
+    _height: 100%;
+}
 .mb-container {
     position: fixed;
+    _position: absolute;
     top: 0;
     right: -35px;
     height: 100%;
     width: 35px;
-    background-color: #fea;
+    background-color: #000;
     -webkit-transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
 }
