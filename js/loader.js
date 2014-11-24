@@ -1,7 +1,7 @@
 /// <reference path="js/libs/require.js" />
 
 define(["jquery"], function ($) {
-
+    
     function getHtml(url, callback) {
         if (!url) {
             return;
