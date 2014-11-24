@@ -1,10 +1,12 @@
 /// <reference path="js/libs/require.js" />
-
 define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
+    var isIe6 = !-[1, ] && !window.XMLHttpRequest;
+    var $window = $(window);
 
     function init($container) {
         var moduleSB = new StringBuilder();
         var stateManager = new StateMachine();
+        
         setTimeout(function() {
             $container.css({
                 right: 0
@@ -49,9 +51,15 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
             }
         });
 
-        $(window).on("resize.MB", function() {
+        $window.on("resize.MB", function() {
             stateManager.deactiveAll();
         });
+        
+        if(isIe6) {
+            $window.on("scroll.MB", function() {
+                $container.css({'top': $window.scrollTop()});
+            });
+        }
     }
 
     return {
