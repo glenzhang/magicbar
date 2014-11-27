@@ -73,18 +73,23 @@ String.method("delCookie", function(domain, path) {
         (path ? "; path=" + path : "");
 });
 
-function StringBuilder() {
+var StringBuilder = function() {
     // var sb = new StringBuilder();
     // sb.append("hello").append(" ").append("world!").toString();
     // output "hello world!"
     this.strings = new Array();
-}
-
-StringBuilder.prototype.append = function(str) {
-    this.strings.push(str);
-    return this;
 };
 
-StringBuilder.prototype.toString = function() {
-    return this.strings.join("");
+StringBuilder.prototype = {
+    constructor: StringBuilder,
+
+    append: function() {
+        this.strings.push(str);
+        return this;
+
+    },
+
+    toString: function() {
+        return this.strings.join("");
+    }
 };
