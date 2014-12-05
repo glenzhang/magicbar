@@ -1,6 +1,7 @@
 body {
     _height: 100%;
 }
+
 .mb-container {
     position: fixed;
     _position: absolute;
@@ -9,6 +10,47 @@ body {
     height: 100%;
     width: 35px;
     background-color: #000;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: right .3s ease-in-out;
+    -moz-transition: right .3s ease-in-out;
+}
+
+.mb-trigger {
+    position: absolute;
+    left: 2px;
+    display: block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    color: #fff;
+}
+
+.mb-tips {
+    position: absolute;
+    display: none;
+    right: 50px;
+    top:-1px;
+    width: 100px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #494949;
+    text-align: center;
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.2);
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    opacity: 0;
+    filter:alpha(opacity=0);
+}
+
+.mb-arrow {
+    position: absolute;
+    right: -8px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    font-size: 16px;
+    font-family: "\5b8b\4f53";
+    font-style: normal;
+    color: #494949;
 }

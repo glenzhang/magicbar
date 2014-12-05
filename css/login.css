@@ -1,12 +1,5 @@
 .mb-login-trigger {
-    position: absolute;
     top: 100px;
-    left: 2px;
-    display: block;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #999;
-    text-indent: -9999px;
 }
 
 .mb-login-magnet {

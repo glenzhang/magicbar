@@ -17,3 +17,36 @@ fieldset, img{border:none;}
 img{vertical-align:middle;font-size:12px;line-height:1em;color:#999;text-align:left;overflow:hidden;-ms-interpolation-mode:bicubic;}/*for alt*/
 iframe{border:none;margin:0;padding:0;}
 ol, ul{list-style:none;}
+
+a{text-decoration:none;}
+a:active{outline:none;}
+a.green:link, a.green:visited, .green{color:#060;}
+a.green:hover, a.green:active{color:#F60;}
+a.aqua:link, a.aqua:visited, .aqua{color:#8B3;}
+a.aqua:hover, a.aqua:active{color:#F60;}
+a.white:link, a.white:visited, .white{color:#FFF;}
+a.white:hover, a.white:active{color:#FFF;}
+a.red:link, a.red:visited, .red{color:#FE4300;}
+a.red:hover, a.red:active{color:#F60;}
+a.pink:link, a.pink:visited, .pink{color:#F69;}
+a.pink:hover, a.pink:active{color:#F60;}
+a.blue:link, a.blue:visited, .blue{color:#0087D5;}
+a.blue:hover, a.blue:active{color:#F60;}
+a.orange:link, a.orange:visited, .orange{color:#F60;}
+a.orange:hover, a.orange:active{color:#F60;}
+a.zero:link, a.zero:visited, .zero{color:#000;}
+a.zero:hover, a.zero:active{color:#F60;}
+a.three:link, a.three:visited, .three{color:#333;}
+a.three:hover, a.three:active{color:#F60;}
+a.six:link, a.six:visited, .six{color:#666;}
+a.six:hover, a.six:active{color:#F60;}
+a.nine:link, a.nine:visited, .nine{color:#999;}
+a.nine:hover, a.nine:active{color:#F60;}
+a.ccc:link, a.ccc:visited, .ccc{color:#ccc;}
+a.ccc:hover, a.ccc:active{color:#F60;}
+a.under:link, a.under:visited{text-decoration:none;}
+a.under:hover, a.under:active{text-decoration:underline;}
+a.underline:link, a.underline:visited{text-decoration:underline;}
+a.underline:hover, a.underline:active{text-decoration:underline;}
+
+body{ font:12px "\5B8B\4F53",sans-serif;}
