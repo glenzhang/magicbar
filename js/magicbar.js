@@ -26,7 +26,9 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
                 var currentController = stateManager.controllerObj[moduleName];
                 var hasLoaded = currentController != undefined;
 
-                $trigger.find(tipsSelector).css({
+                clearTimeout(mouseenterSID);
+
+                $trigger.find(tipsSelector).hide().css({
                     right: "50px",
                     opacity: 0
                 });
@@ -46,11 +48,12 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
                         require(["{0}module".format(moduleName)], function(Module) {
                             var module = new Module();
 
+                            module.unusetriggertop = $trigger.data("uutt"); 
                             module.$trigger = $trigger;
                             module.$view = $moduleTemplate;
                             module.name = moduleName;
                             stateManager.add(module);
-                            $trigger.data("name", module.name);
+                            
                             module.setup();
                         });
                     });
@@ -82,7 +85,9 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
         var moduleName = $this.data("module");
         var currentController = stateManager.controllerObj[moduleName];
 
-        if(currentController && currentController.showing) {
+        if (currentController &&
+            currentController.showing &&
+            currentController.$trigger[0] == this) {
             return;
         }
 

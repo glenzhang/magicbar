@@ -3,12 +3,10 @@
 }
 
 .mb-message-magnet {
-    position: absolute;
+    float: left;
     width: 100px;
-    height: 30px;
-    background: #666;
+    height: 100%;
+    background-color: #666;
     border: 1px solid #000;
     color: #fff;
-    opacity: 0;
-    filter:alpha(opacity=0);
 }

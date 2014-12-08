@@ -12,6 +12,7 @@ define(["jquery"], function($) {
         }).toUpperCase();
         */
         this.name = "";
+        this.unusetriggertop = false;
     };
 
     ModuleBase.fn = ModuleBase.prototype;
@@ -19,26 +20,32 @@ define(["jquery"], function($) {
     ModuleBase.fn.activate = function() {
         this.showing = true;
 
-        this.$view.css({
-                "top": this.$trigger.offset().top - $(window).scrollTop() + "px",
-                "right": "70px"
-            })
-            .show();
-
-        this.$view.animate({
-            right: "35px",
-            opacity: 1
-        }, 100);
+        if (!this.unusetriggertop) {
+            this.$view.css({
+                    "top": this.$trigger.offset().top - $(window).scrollTop() + "px",
+                    "right": "70px"
+                })
+                .show().animate({
+                    right: "35px",
+                    opacity: 1
+                }, 100);
+        } else {
+            this.$view.show();
+        }
     };
 
     ModuleBase.fn.deactivate = function() {
         this.showing = false;
-        this.$view.animate({
-            right: "70px",
-            opacity: 0
-        }, 100, $.proxy(function() {
+        if (!this.unusetriggertop) {
+            this.$view.animate({
+                right: "70px",
+                opacity: 0
+            }, 100, $.proxy(function() {
+                this.$view.hide();
+            }, this));
+        }else {
             this.$view.hide();
-        }, this));
+        }
     };
 
     ModuleBase.fn.toggle = function() {
