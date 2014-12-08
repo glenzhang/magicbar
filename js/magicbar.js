@@ -29,8 +29,7 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
                 clearTimeout(mouseenterSID);
 
                 $trigger.find(tipsSelector).hide().css({
-                    right: "50px",
-                    opacity: 0
+                    right: "50px"
                 });
 
                 if (hasLoaded) {
@@ -93,8 +92,7 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
 
         mouseenterSID = setTimeout(function() {
             $this.find(tipsSelector).show().animate({
-                right: "33px",
-                opacity: 1
+                right: "33px"
             }, 150);
         }, 250);
     }
@@ -103,8 +101,7 @@ define(["jquery", "loader", "statemachine"], function($, L, StateMachine) {
         clearTimeout(mouseenterSID);
 
         $(this).find(tipsSelector).animate({
-            right: "50px",
-            opacity: 0
+            right: "50px"
         }, 150, function() {
             $(this).hide();
         });

@@ -26,8 +26,7 @@ define(["jquery"], function($) {
                     "right": "70px"
                 })
                 .show().animate({
-                    right: "35px",
-                    opacity: 1
+                    right: "35px"
                 }, 100);
         } else {
             this.$view.show();
@@ -38,12 +37,11 @@ define(["jquery"], function($) {
         this.showing = false;
         if (!this.unusetriggertop) {
             this.$view.animate({
-                right: "70px",
-                opacity: 0
+                right: "70px"
             }, 100, $.proxy(function() {
                 this.$view.hide();
             }, this));
-        }else {
+        } else {
             this.$view.hide();
         }
     };

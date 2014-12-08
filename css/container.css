@@ -38,8 +38,6 @@ body {
     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .2);
     box-shadow: 0 0 5px rgba(0, 0, 0, .2);
-    opacity: 0;
-    filter: alpha(opacity=0);
 }
 .mb-arrow {
     position: absolute;
